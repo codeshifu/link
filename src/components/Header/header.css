@@ -1,0 +1,18 @@
+header._header {
+    background: #607D8B;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    font-family: 'Open Sans', sans-serif;
+}
+
+._header h2 {
+    margin: 0;
+    padding: 16px;
+    font-size: 1.277em;
+    font-weight: 600;
+    line-height: 1em;
+}
