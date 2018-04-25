@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ModalContent from '../ModalContent/ModalContent'
 import PropTypes from 'prop-types'
 import './modal.css'
 
@@ -9,7 +10,9 @@ class Modal extends Component {
         <div className='vertical-alignment-helper'>
           <div className='modal-dialog vertical-align-center'>
             <div className='modal-dialog' role='document'>
-              {this.props.children}
+              <ModalContent modalTitle='Add bookmark'>
+                {this.props.children}
+              </ModalContent>
             </div>
           </div>
         </div>

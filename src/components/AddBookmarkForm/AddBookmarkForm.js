@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import ModalContent from '../ModalContent/ModalContent'
 
 class AddBookmarkForm extends Component {
   render () {
     return (
-      <ModalContent modalTitle='Add bookmark'>
+      <div>
         <div className='form-group'>
           <label htmlFor='bk_title'>Title</label>
           <input type='text' className='form-control' id='bk_title' placeholder='e.g. apache virtualhost slow lookup' />
@@ -16,7 +15,7 @@ class AddBookmarkForm extends Component {
         <div className='modal-footer row'>
           <button type='button' className='btn btn-primary'>Add</button>
         </div>
-      </ModalContent>
+      </div>
     )
   }
 }
