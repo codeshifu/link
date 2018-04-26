@@ -5,7 +5,7 @@ import './bookmark.css'
 
 class Bookmark extends Component {
   render () {
-    const { title, link } = this.props
+    const { title, link } = this.props.bookmark
     const parsedUrl = url.parse(link)
     return (
       <div className='_bookmark'>
@@ -19,7 +19,6 @@ class Bookmark extends Component {
 }
 
 Bookmark.propTypes = {
-  title: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired
+  bookmark: PropTypes.object.isRequired
 }
 export default Bookmark
