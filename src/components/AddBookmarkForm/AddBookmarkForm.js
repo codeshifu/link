@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import crypto from 'crypto'
 
 class AddBookmarkForm extends Component {
   constructor (props) {
     super(props)
-    console.log(this.props.bookmark)
     const {title = '', link = '', id = ''} = this.props.bookmark || {}
     this.state = {
       title,
@@ -30,10 +28,9 @@ class AddBookmarkForm extends Component {
     e.preventDefault()
     const title = this.title.value
     const link = this.url.value
-    const id = crypto.randomBytes(5).toString('hex')
 
     if (!title || !link) return
-    this.props.onSubmit({title, link, id})
+    this.props.onSubmit({title, link})
     this.title.value = ''
     this.url.value = ''
   }

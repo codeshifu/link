@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Provider} from '../AppContext/AppContext'
+import {randomBytes} from 'crypto'
 
 class AppProvider extends Component {
   constructor (props) {
@@ -22,9 +23,10 @@ class AppProvider extends Component {
     return (
       <Provider value={{state: this.state,
         add: (data) => {
-          const update = this.state.bookmarks
-          update.push(data)
-          this.setState({bookmarks: update})
+          const bookmarks = {...this.state.bookmarks}
+          const key = randomBytes(5).toString('hex')
+          bookmarks[key] = data
+          this.setState({bookmarks})
         }}}>
         {this.props.children}
       </Provider>
