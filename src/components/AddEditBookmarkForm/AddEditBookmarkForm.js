@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class AddEditBookmarkForm extends Component {
   constructor (props) {
@@ -65,6 +66,11 @@ class AddEditBookmarkForm extends Component {
       </form>
     )
   }
+}
+
+AddEditBookmarkForm.propTypes = {
+  bookmark: PropTypes.object,
+  onSubmit: PropTypes.func.isRequired
 }
 
 export default AddEditBookmarkForm

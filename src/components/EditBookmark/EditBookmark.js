@@ -17,8 +17,7 @@ const EditBookmark = ({bookmark}) => {
 }
 
 EditBookmark.propTypes = {
-  bookmark: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  bookmark: PropTypes.object.isRequired
 }
 
 export default EditBookmark
