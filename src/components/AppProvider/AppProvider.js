@@ -5,18 +5,16 @@ class AppProvider extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      bookmarks: [
-        {
-          id: 'bookmark1',
+      bookmarks: {
+        bookmark1: {
           title: 'Creating your own snippets',
           link: 'https://code.visualstudio.com/docs/editor/userdefinedsnippets'
         },
-        {
-          id: 'bookmark2',
+        bookmark2: {
           title: 'Apache VirtualHost slow lookup',
           link: 'https://stackoverflow.com/questions/7547316/apache-virtualhost-slow-lookup'
         }
-      ]
+      }
     }
   }
 
