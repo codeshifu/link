@@ -5,12 +5,13 @@ import './modal.css'
 
 class Modal extends Component {
   render () {
+    const {modalTitle, modalId} = this.props
     return (
-      <div className='_modal modal fade' id={this.props.modalId} tabIndex='-1' role='dialog' aria-labelledby='myModalLabel'>
+      <div className='_modal modal fade' id={modalId} tabIndex='-1' role='dialog' aria-labelledby='myModalLabel'>
         <div className='vertical-alignment-helper'>
           <div className='modal-dialog vertical-align-center'>
             <div className='modal-dialog' role='document'>
-              <ModalContent modalTitle='Add bookmark'>
+              <ModalContent modalTitle={modalTitle}>
                 {this.props.children}
               </ModalContent>
             </div>
@@ -22,7 +23,8 @@ class Modal extends Component {
 }
 
 Modal.propTypes = {
-  modalId: PropTypes.string.isRequired
+  modalId: PropTypes.string.isRequired,
+  modalTitle: PropTypes.string.isRequired
 }
 
 export default Modal
