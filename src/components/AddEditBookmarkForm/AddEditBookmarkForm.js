@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class AddBookmarkForm extends Component {
+class AddEditBookmarkForm extends Component {
   constructor (props) {
     super(props)
     const {title = '', link = '', id = ''} = this.props.bookmark || {}
@@ -67,4 +67,4 @@ class AddBookmarkForm extends Component {
   }
 }
 
-export default AddBookmarkForm
+export default AddEditBookmarkForm
