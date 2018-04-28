@@ -27,6 +27,11 @@ class AppProvider extends Component {
           const key = randomBytes(5).toString('hex')
           bookmarks[key] = data
           this.setState({bookmarks})
+        },
+        edit: (id, updatedBookmark) => {
+          const bookmarks = {...this.state.bookmarks}
+          bookmarks[id] = updatedBookmark
+          this.setState({bookmarks})
         }}}>
         {this.props.children}
       </Provider>

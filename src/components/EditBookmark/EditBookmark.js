@@ -8,19 +8,14 @@ class EditBookmark extends Component {
     this.editBookmark = this.editBookmark.bind(this)
   }
 
-  editBookmark (action, update) {
-    action(update)
-  }
-
   render () {
     return (
       <Consumer>
         {
-            (({add}) => (
+            (({edit}) => (
               <AddBookmarkForm
                 bookmark={this.props.bookmark}
-                onSubmit={(update) => this.editBookmark(add, update)} />
-                )
+                onSubmit={(update) => edit(this.props.bookmark.id, update)} />)
             )
         }
       </Consumer>
