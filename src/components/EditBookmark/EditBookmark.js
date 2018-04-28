@@ -1,26 +1,24 @@
-import React, { Component } from 'react'
-import AddBookmarkForm from '../AddBookmarkForm/AddBookmarkForm'
+import React from 'react'
 import { Consumer } from '../AppContext/AppContext'
+import AddEditBookmarkForm from '../AddEditBookmarkForm/AddEditBookmarkForm'
+import PropTypes from 'prop-types'
 
-class EditBookmark extends Component {
-  constructor (props) {
-    super(props)
-    this.editBookmark = this.editBookmark.bind(this)
-  }
+const EditBookmark = ({bookmark}) => {
+  return (
+    <Consumer>
+      {
+          (({edit}) => (
+            <AddEditBookmarkForm
+              bookmark={bookmark}
+              onSubmit={(update) => edit(bookmark.id, update)} />))
+      }
+    </Consumer>
+  )
+}
 
-  render () {
-    return (
-      <Consumer>
-        {
-            (({edit}) => (
-              <AddBookmarkForm
-                bookmark={this.props.bookmark}
-                onSubmit={(update) => edit(this.props.bookmark.id, update)} />)
-            )
-        }
-      </Consumer>
-    )
-  }
+EditBookmark.propTypes = {
+  bookmark: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired
 }
 
 export default EditBookmark
