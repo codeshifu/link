@@ -32,6 +32,11 @@ class AppProvider extends Component {
           const bookmarks = {...this.state.bookmarks}
           bookmarks[id] = updatedBookmark
           this.setState({bookmarks})
+        },
+        remove: (id) => {
+          const bookmarks = {...this.state.bookmarks}
+          delete bookmarks[id]
+          this.setState({bookmarks})
         }}}>
         {this.props.children}
       </Provider>
