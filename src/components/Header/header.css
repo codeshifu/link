@@ -15,4 +15,6 @@ header._header {
     font-size: 1.277em;
     font-weight: 600;
     line-height: 1em;
+    display: inline-block;
+    width: auto;
 }
