@@ -30,7 +30,7 @@ class Bookmark extends Component {
           <div className='_bookmark'>
             <a href={parsedUrl.href}>
               <h1 className='title'>{title}</h1>
-              <p className='link'>{parsedUrl.hostname.replace('www.', '')}</p>
+              <p className='link'>{ parsedUrl.hostname && parsedUrl.hostname.replace('www.', '')}</p>
             </a>
             {this.showTags()}
             <OptionsMenu editModalId={id} onDelete={() => remove(id)} />

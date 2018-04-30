@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { parse } from 'url'
 
 class AddEditBookmarkForm extends Component {
   constructor (props) {
@@ -31,6 +32,8 @@ class AddEditBookmarkForm extends Component {
     const link = this.url.value
 
     if (!title || !link) return
+    if (!parse(link) || !parse(link).hostname) return
+
     this.props.onSubmit({title, link})
     this.title.value = ''
     this.url.value = ''
@@ -48,6 +51,7 @@ class AddEditBookmarkForm extends Component {
             type='text'
             className='form-control'
             id='bk_title'
+            required
             placeholder='e.g. apache virtualhost slow lookup' />
         </div>
         <div className='form-group'>
@@ -56,7 +60,9 @@ class AddEditBookmarkForm extends Component {
             value={this.state.link}
             onChange={this.onLinkChange}
             ref={input => { this.url = input }}
-            type='text' className='form-control'
+            type='url'
+            required
+            className='form-control'
             id='bk_url'
             placeholder='e.g. https://stackoverflow.com/questions/7547316/apache-virtualhost-slow-lookup' />
         </div>
