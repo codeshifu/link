@@ -5,8 +5,20 @@ import './bookmark.css'
 import Modal from '../Modal/Modal'
 import EditBookmark from '../EditBookmark/EditBookmark'
 import { Consumer } from '../AppContext/AppContext'
+import Tag from '../Tag/Tag'
+import OptionsMenu from '../OptionsMenu/OptionsMenu'
 
 class Bookmark extends Component {
+  constructor (props) {
+    super(props)
+    this.showTags = this.showTags.bind(this)
+  }
+
+  showTags () {
+    const tags = this.props.tags || []
+    return tags.map((tag, i) => <Tag tag={tag} key={i} />)
+  }
+
   render () {
     const { title, link, id } = this.props.bookmark
     const parsedUrl = url.parse(link)
@@ -20,23 +32,8 @@ class Bookmark extends Component {
               <h1 className='title'>{title}</h1>
               <p className='link'>{parsedUrl.hostname.replace('www.', '')}</p>
             </a>
-            <div className='dropdown'>
-              <span className='btn dropdown-toggle' data-toggle='dropdown'>
-                <span className='glyphicon glyphicon-option-vertical' aria-hidden='true' />
-              </span>
-              <ul className='dropdown-menu dropdown-menu-right'>
-                <li role='presentation'>
-                  <a role='menuitem' data-toggle='modal' data-target={`#${id}`}>Edit</a>
-                </li>
-                <li role='presentation'>
-                  <a role='menuitem'>Copy URL</a>
-                </li>
-                <li className='divider' />
-                <li role='presentation'>
-                  <a role='menuitem' onClick={() => remove(id)}>Delete</a>
-                </li>
-              </ul>
-            </div>
+            {this.showTags()}
+            <OptionsMenu editModalId={id} onDelete={() => remove(id)} />
             <Modal modalId={id} modalTitle='Edit bookmark'>
               <EditBookmark bookmark={this.props.bookmark} />
             </Modal>

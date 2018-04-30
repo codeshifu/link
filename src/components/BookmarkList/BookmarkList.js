@@ -7,7 +7,7 @@ const BookmarkList = ({bookmarks = []}) => {
     <Consumer>
       {
         ({state}) => Object.keys(state.bookmarks).map(id =>
-          <Bookmark key={id} bookmark={{...state.bookmarks[id], id}} />)
+          <Bookmark key={id} tags={state.bookmarks[id].tags} bookmark={{...state.bookmarks[id], id}} />)
         }
     </Consumer>
   )
