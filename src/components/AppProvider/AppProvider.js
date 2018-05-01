@@ -37,13 +37,16 @@ class AppProvider extends Component {
           link: 'http://stackoverflow.com/a/36252036/4238544',
           tags: ['mac', 'osx']
         }
-      }
+      },
+      searchQuery: ''
     }
   }
 
   render () {
     return (
-      <Provider value={{state: this.state,
+      <Provider value={{
+        bookmarks: this.state.bookmarks,
+        searchQuery: this.state.searchQuery,
         add: (data) => {
           const bookmarks = {...this.state.bookmarks}
           const key = randomBytes(5).toString('hex')
@@ -59,6 +62,9 @@ class AppProvider extends Component {
           const bookmarks = {...this.state.bookmarks}
           delete bookmarks[id]
           this.setState({bookmarks})
+        },
+        search: (query) => {
+          this.setState({searchQuery: query})
         }}}>
         {this.props.children}
       </Provider>
