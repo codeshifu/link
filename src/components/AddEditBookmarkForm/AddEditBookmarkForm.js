@@ -36,12 +36,14 @@ class AddEditBookmarkForm extends Component {
 
   onFormSubmit (e) {
     e.preventDefault()
-    const title = this.title.value
-    const link = this.url.value
-    const tags = this.tags.value.split(',')
+    const title = this.title.value.trim()
+    const link = this.url.value.trim()
+    let tags = this.tags.value.trim()
 
     if (!title || !link || !tags) return
     if (!parse(link) || !parse(link).hostname) return
+
+    tags = tags.trim(',')
 
     this.props.onSubmit({title, link, tags})
     this.title.value = ''
