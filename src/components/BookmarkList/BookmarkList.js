@@ -3,6 +3,7 @@ import Bookmark from '../Bookmark/Bookmark'
 import {Consumer} from '../AppContext/AppContext'
 import filters from '../../filters/bookmarkFilter'
 import './bookmarkList.css'
+import Empty from '../Empty/Empty'
 
 const BookmarkList = ({bookmarks = []}) => {
   return (
@@ -10,8 +11,9 @@ const BookmarkList = ({bookmarks = []}) => {
       <Consumer>
         {
         ({bookmarks, searchQuery}) => {
+          if (Object.keys(bookmarks).length <= 0) return <Empty />
           const filteredBookmarks = filters(bookmarks, searchQuery)
-          if (filteredBookmarks.length <= 0) return <p style={{background: '#fff', margin: 0}} className='text-center'>No search results found</p>
+          if (filteredBookmarks && filteredBookmarks.length <= 0) return <p style={{background: '#fff', margin: 0}} className='text-center'>No search results found</p>
           return filteredBookmarks.map(id =>
             <Bookmark
               key={id}
