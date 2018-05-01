@@ -1,0 +1,30 @@
+._empty {
+    background: #fff;
+    position: absolute;
+    display: table;
+    width: 100%;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    height: 100%;
+}
+
+._empty .content {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+._empty .content img {
+    width: 250px;
+}
+
+._empty .content p {
+    margin: 20px 0;
+}
+
+._empty .content p>span {
+    padding: 0;
+    vertical-align: baseline;
+}
