@@ -38,7 +38,8 @@ class AppProvider extends Component {
           tags: ['mac', 'osx']
         }
       },
-      searchQuery: ''
+      searchQuery: '',
+      addBookmarkId: 'add_bookmark'
     }
   }
 
@@ -47,6 +48,7 @@ class AppProvider extends Component {
       <Provider value={{
         bookmarks: this.state.bookmarks,
         searchQuery: this.state.searchQuery,
+        addBookmarkId: this.state.addBookmarkId,
         add: (data) => {
           const bookmarks = {...this.state.bookmarks}
           const key = randomBytes(5).toString('hex')
