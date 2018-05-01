@@ -1,47 +1,57 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { parse } from 'url'
+import './addEditBookmarkForm.css'
 
 class AddEditBookmarkForm extends Component {
   constructor (props) {
     super(props)
-    const {title = '', link = '', id = ''} = this.props.bookmark || {}
+    const {title = '', link = '', tags = ''} = this.props.bookmark || {}
     this.state = {
       title,
       link,
-      id
+      tags
     }
 
     this.onTitleChange = this.onTitleChange.bind(this)
     this.onLinkChange = this.onLinkChange.bind(this)
+    this.onTagsChange = this.onTagsChange.bind(this)
     this.onFormSubmit = this.onFormSubmit.bind(this)
   }
 
-  onTitleChange (dom) {
-    const title = dom.target.value
+  onTitleChange () {
+    const title = this.title.value
     this.setState({title})
   }
-  onLinkChange (dom) {
-    const link = dom.target.value
+
+  onLinkChange () {
+    const link = this.url.value
     this.setState({link})
+  }
+
+  onTagsChange () {
+    const tags = this.tags.value
+    this.setState({tags})
   }
 
   onFormSubmit (e) {
     e.preventDefault()
     const title = this.title.value
     const link = this.url.value
+    const tags = this.tags.value.split(',')
 
-    if (!title || !link) return
+    if (!title || !link || !tags) return
     if (!parse(link) || !parse(link).hostname) return
 
-    this.props.onSubmit({title, link})
+    this.props.onSubmit({title, link, tags})
     this.title.value = ''
     this.url.value = ''
+    this.tags.value = ''
   }
 
   render () {
     return (
-      <form onSubmit={(e) => this.onFormSubmit(e)}>
+      <form className='_addEditBookmarkForm' onSubmit={(e) => this.onFormSubmit(e)}>
         <div className='form-group'>
           <label htmlFor='bk_title'>Title</label>
           <input
@@ -52,7 +62,13 @@ class AddEditBookmarkForm extends Component {
             className='form-control'
             id='bk_title'
             required
-            placeholder='e.g. apache virtualhost slow lookup' />
+            aria-describedby='titleBlock'
+            placeholder='Undefined is not a function' />
+          <span
+            id='titleBlock'
+            className='help-block'>
+              Uncaught TypeError: undefined is not a function
+          </span>
         </div>
         <div className='form-group'>
           <label htmlFor='bk_url'>URL</label>
@@ -63,8 +79,26 @@ class AddEditBookmarkForm extends Component {
             type='url'
             required
             className='form-control'
-            id='bk_url'
-            placeholder='e.g. https://stackoverflow.com/questions/7547316/apache-virtualhost-slow-lookup' />
+            aria-describedby='urlBlock'
+            id='bk_url' />
+          <span
+            className='help-block'
+            id='urlBlock'>URL must start with either <em>http://</em> or <em>https://</em> such as <em>https://stackoverflow.com/questions/23524180/</em></span>
+        </div>
+        <div className='form-group'>
+          <label htmlFor='bk_tags'>Tags</label>
+          <input
+            value={this.state.tags}
+            onChange={this.onTagsChange}
+            ref={input => { this.tags = input }}
+            type='text'
+            placeholder=''
+            required
+            aria-describedby='tagBlock'
+            className='form-control' />
+          <span
+            id='tagBlock'
+            className='help-block'>At least one tag e.g. ( <em>javascript, react, state</em> ) separated by comma</span>
         </div>
         <div className='modal-footer row'>
           <button type='submit' className='btn btn-primary'>Save</button>

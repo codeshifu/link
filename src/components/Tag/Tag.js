@@ -4,7 +4,7 @@ import './tag.css'
 
 const Tag = ({tag}) => {
   return (
-    <span className='_tag'>{tag}</span>
+    <span className='_tag'>{tag.trim()}</span>
   )
 }
 
