@@ -103,6 +103,7 @@ class AddEditBookmarkForm extends Component {
             className='help-block'>At least one tag e.g. ( <em>javascript, react, state</em> ) separated by comma</span>
         </div>
         <div className='modal-footer row'>
+          <button type='button' className='btn btn-default' data-dismiss='modal'>Close</button>
           <button type='submit' className='btn btn-primary'>Save</button>
         </div>
       </form>
