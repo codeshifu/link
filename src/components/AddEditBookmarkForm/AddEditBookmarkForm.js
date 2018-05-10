@@ -44,6 +44,8 @@ class AddEditBookmarkForm extends Component {
     if (!parse(link) || !parse(link).hostname) return
 
     tags = tags.split(',')
+    tags = tags.filter(tag => tag.length > 0)
+    if (tags.length <= 0) return
 
     this.props.onSubmit({title, link, tags})
     this.title.value = ''
