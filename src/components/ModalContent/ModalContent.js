@@ -3,12 +3,18 @@ import PropTypes from 'prop-types'
 
 const ModalContent = ({modalTitle, children}) => {
   return (
-    <div className='modal-content'>
-      <div className='modal-header'>
-        <h4 className='modal-title'>{modalTitle}</h4>
-      </div>
-      <div className='modal-body'>
-        {children}
+    <div className='vertical-alignment-helper'>
+      <div className='modal-dialog vertical-align-center'>
+        <div className='modal-dialog' role='document'>
+          <div className='modal-content'>
+            <div className='modal-header'>
+              <h4 className='modal-title'>{modalTitle}</h4>
+            </div>
+            <div className='modal-body'>
+              {children}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
