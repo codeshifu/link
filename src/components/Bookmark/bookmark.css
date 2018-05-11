@@ -1,5 +1,5 @@
 ._bookmark {
-    padding: 16px;
+    padding: 8px 16px;
     background: #fff;
     font-family: 'Open Sans', sans-serif;
     margin-bottom: 1px;
@@ -25,7 +25,7 @@
 ._bookmark .dropdown {
     position: absolute;
     right: 16px;
-    top: 16px;
+    top: 8px;
 }
 
 ._bookmark .dropdown .btn {
