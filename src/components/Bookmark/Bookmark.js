@@ -26,14 +26,17 @@ class Bookmark extends Component {
     return (
       <Consumer>
         {
-        (({remove}) => (
+        (({remove, showSnackBar}) => (
           <div className='_bookmark'>
             <a href={parsedUrl.href}>
               <h1 className='title'>{title}</h1>
               <p className='link'>{ parsedUrl.hostname && parsedUrl.hostname.replace('www.', '')}</p>
             </a>
             {this.showTags()}
-            <OptionsMenu editModalId={id} onDelete={() => remove(id)} />
+            <OptionsMenu
+              editModalId={id}
+              onCopyURL={() => showSnackBar('URL copied')}
+              onDelete={() => remove(id)} />
             <Modal modalId={id} modalTitle='Edit bookmark'>
               <EditBookmark bookmark={this.props.bookmark} />
             </Modal>

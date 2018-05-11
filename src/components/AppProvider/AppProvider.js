@@ -39,7 +39,8 @@ class AppProvider extends Component {
         }
       },
       searchQuery: '',
-      addBookmarkId: 'add_bookmark'
+      addBookmarkId: 'add_bookmark',
+      snackBarText: ''
     }
   }
 
@@ -49,6 +50,7 @@ class AppProvider extends Component {
         bookmarks: this.state.bookmarks,
         searchQuery: this.state.searchQuery,
         addBookmarkId: this.state.addBookmarkId,
+        snackBarText: this.state.snackBarText,
         add: (data) => {
           const bookmarks = {...this.state.bookmarks}
           const key = randomBytes(5).toString('hex')
@@ -64,6 +66,13 @@ class AppProvider extends Component {
           const bookmarks = {...this.state.bookmarks}
           delete bookmarks[id]
           this.setState({bookmarks})
+        },
+        showSnackBar: (text) => {
+          this.setState({snackBarText: text}, () => {
+            setTimeout(() => {
+              this.setState({snackBarText: ''})
+            }, 3000)
+          })
         },
         search: (query) => {
           this.setState({searchQuery: query})

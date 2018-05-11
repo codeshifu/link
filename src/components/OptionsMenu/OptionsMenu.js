@@ -1,6 +1,6 @@
 import React from 'react'
 
-const OptionsMenu = ({editModalId, onDelete}) => {
+const OptionsMenu = ({editModalId, onCopyURL, onDelete}) => {
   return (
     <div className='dropdown'>
       <span className='btn dropdown-toggle' data-toggle='dropdown'>
@@ -11,7 +11,7 @@ const OptionsMenu = ({editModalId, onDelete}) => {
           <a role='menuitem' data-toggle='modal' data-target={`#${editModalId}`}>Edit</a>
         </li>
         <li role='presentation'>
-          <a role='menuitem'>Copy URL</a>
+          <a role='menuitem' onClick={onCopyURL}>Copy URL</a>
         </li>
         <li className='divider' />
         <li role='presentation'>
