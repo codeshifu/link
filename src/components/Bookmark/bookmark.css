@@ -9,6 +9,9 @@
 ._bookmark h1.title {
     font-size: 1.1em;
     color: #313131;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     width: 250px;
     margin: 0;
     font-weight: 600;
