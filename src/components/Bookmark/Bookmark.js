@@ -12,11 +12,18 @@ class Bookmark extends Component {
   constructor (props) {
     super(props)
     this.showTags = this.showTags.bind(this)
+    this.copyURL = this.copyURL.bind(this)
   }
 
   showTags () {
     const tags = this.props.tags || []
     return tags.map((tag, i) => <Tag tag={tag} key={i} />)
+  }
+
+  copyURL (fn, text) {
+    this.url.select()
+    const bool = document.execCommand('copy')
+    return bool ? fn(text) : false
   }
 
   render () {
@@ -29,13 +36,18 @@ class Bookmark extends Component {
         (({remove, showSnackBar}) => (
           <div className='_bookmark'>
             <a href={parsedUrl.href}>
+              <input
+                ref={ref => { this.url = ref }}
+                readOnly
+                value={link}
+                type='text' />
               <h1 className='title'>{title}</h1>
               <p className='link'>{ parsedUrl.hostname && parsedUrl.hostname.replace('www.', '')}</p>
             </a>
             {this.showTags()}
             <OptionsMenu
               editModalId={id}
-              onCopyURL={() => showSnackBar('URL copied')}
+              onCopyURL={() => this.copyURL(showSnackBar, 'URL Copied')}
               onDelete={() => remove(id)} />
             <Modal modalId={id} modalTitle='Edit bookmark'>
               <EditBookmark bookmark={this.props.bookmark} />
