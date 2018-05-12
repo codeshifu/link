@@ -37,6 +37,7 @@ class Bookmark extends Component {
           <div className='_bookmark'>
             <a href={parsedUrl.href}>
               <input
+                className='copyURL'
                 ref={ref => { this.url = ref }}
                 readOnly
                 value={link}

@@ -39,7 +39,7 @@
     min-width: auto;
 }
 
-._bookmark input {
+._bookmark input.copyURL {
     position: absolute;
     left: -999999px;
     z-index: -999999;
