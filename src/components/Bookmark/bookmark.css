@@ -6,13 +6,27 @@
     position: relative;
 }
 
+._bookmark .wrapper {
+    width: 250px;
+    padding: 0;
+    margin-left: 20px;
+}
+
+._bookmark input[type=checkbox].check_bookmark {
+    float: left;
+}
+
+._bookmark .tags {
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+
 ._bookmark h1.title {
     font-size: 1.1em;
     color: #313131;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 250px;
     margin: 0;
     font-weight: 600;
     padding: 0;

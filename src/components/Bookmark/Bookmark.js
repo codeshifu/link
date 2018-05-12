@@ -35,17 +35,22 @@ class Bookmark extends Component {
         {
         (({remove, showSnackBar}) => (
           <div className='_bookmark'>
-            <a href={parsedUrl.href}>
-              <input
-                className='copyURL'
-                ref={ref => { this.url = ref }}
-                readOnly
-                value={link}
-                type='text' />
-              <h1 className='title'>{title}</h1>
-              <p className='link'>{ parsedUrl.hostname && parsedUrl.hostname.replace('www.', '')}</p>
-            </a>
-            {this.showTags()}
+            <input type='checkbox' className='check_bookmark' />
+            <div className='wrapper'>
+              <a href={parsedUrl.href}>
+                <input
+                  className='copyURL'
+                  ref={ref => { this.url = ref }}
+                  readOnly
+                  value={link}
+                  type='text' />
+                <h1 className='title'>{title}</h1>
+                <p className='link'>{ parsedUrl.hostname && parsedUrl.hostname.replace('www.', '')}</p>
+              </a>
+              <div className='tags'>
+                {this.showTags()}
+              </div>
+            </div>
             <OptionsMenu
               editModalId={id}
               onCopyURL={() => this.copyURL(showSnackBar, 'URL Copied')}
