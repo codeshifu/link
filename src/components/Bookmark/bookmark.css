@@ -38,3 +38,9 @@
 ._bookmark .dropdown .dropdown-menu {
     min-width: auto;
 }
+
+._bookmark input {
+    position: absolute;
+    left: -999999px;
+    z-index: -999999;
+}
